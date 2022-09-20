@@ -9,3 +9,5 @@ export interface State {
   selectedTodo: string | null;
   counter: number;
 }
+
+    // "@types/react": "^18.0.20",

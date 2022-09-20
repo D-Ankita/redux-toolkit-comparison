@@ -234,35 +234,41 @@ export const createTodoAction = (data: { desc: string }): createTodoActionType =
 
 interface editTodoActionType {
     type: typeof EDIT_TODO,
-    payload: {
-        id: string,
-        desc: string,
-    }
+    payload:Todo
+    //  {
+    //     id: string,
+    //     desc: string,
+    //     isComplete:boolean
+    // }
 }
 
-export const editTodoAction = (data: { id: string, desc: string }): editTodoActionType => {
+export const editTodoAction = (data: Todo): editTodoActionType => {
     return {
         type: EDIT_TODO,
         payload: {
             id: data.id,
-            desc: data.desc
+            desc: data.desc,
+            isComplete:data.isComplete,
         }
     }
 }
 
 interface toggleTodoActionType {
     type: typeof TOGGLE_TODO,
-    payload: {
-        id: string,
-        isComplete: boolean
-    }
+    payload: Todo
+    // {
+    //     id: string,
+    //     isComplete: boolean
+    // }
 }
 
-export const toggleDataAction = (data: { id: string, isComplete: boolean }): toggleTodoActionType => {
+export const toggleDataAction = (data: Todo): toggleTodoActionType => {
     return {
         type: TOGGLE_TODO,
-        payload: {
+        payload:
+         {
             id: data.id,
+            desc:data.desc,
             isComplete: data.isComplete
         }
     }
@@ -270,30 +276,33 @@ export const toggleDataAction = (data: { id: string, isComplete: boolean }): tog
 
 interface deleteTodoActionType{
     type: typeof DELETE_TODO,
-    payload: {
-        id:string
-    }
+    payload: Todo
 }
 
-export const deleteTodoAction = ({ id }: { id: string }): deleteTodoActionType => {
+export const deleteTodoAction = (data: Todo): deleteTodoActionType => {
     return {
         type: DELETE_TODO,
         payload: {
-            id
+            id: data.id,
+            desc:data.desc,
+            isComplete: data.isComplete
         }
     }
 }
 
 interface selectTodoActionType{
-    type: typeof SELECT_TODO, payload: {
-        id: string
-    }
+    type: typeof SELECT_TODO, payload: Todo
+    // {
+    //     id: string
+    // }
 }
-export const selectedTodoAction = ({ id }: { id: string }): selectTodoActionType => {
+export const selectedTodoAction = (data: Todo): selectTodoActionType => {
     return {
         type: SELECT_TODO,
         payload: {
-            id
+            id: data.id,
+            desc:data.desc,
+            isComplete: data.isComplete
         }
     }
 }
@@ -310,7 +319,7 @@ export const todoReducer=(state : Todo[]= todosInitialState, action : todoAction
             return [...state , payload]
         }
         case EDIT_TODO:{
-            return state.map((todo)=>todo.id === payload.id ? {...todo, desc: payload.desc}: todo)
+            return state.map((todo)=>todo.id === payload.id ? {...todo, desc: payload.id}: todo)
         }
         case DELETE_TODO:{
             return state.filter((todo) => todo.id !== payload.id)
