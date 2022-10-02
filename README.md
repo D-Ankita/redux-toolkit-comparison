@@ -1,3 +1,8 @@
+<img height='250' alt="Untitled_design-removebg-selfstudy" src="https://user-images.githubusercontent.com/46243069/193447406-f14bf25f-1ece-4329-a321-c0ac2176db19.png">
+
+<hr>
+
+
 This is the starting place in conjunction with my **Redux Toolkit** comparison video. Please start here. NOTE: no dependencies related to Redux are installed here! Please follow along in the video and add them with me!
 
 <img src="image.png" alt="app" style="margin-left: 15px;" />
